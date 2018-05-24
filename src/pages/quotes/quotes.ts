@@ -1,25 +1,23 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the QuotesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Quote } from "./../../data/quote.interface";
+import { Component, OnInit } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
 
 @IonicPage()
 @Component({
-  selector: 'page-quotes',
-  templateUrl: 'quotes.html',
+  selector: "page-quotes",
+  templateUrl: "quotes.html"
 })
-export class QuotesPage {
+export class QuotesPage implements OnInit {
+  Quotes: { category: string; quotes: Quote[]; icon: string };
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  ngOnInit(): void {
+    this.Quotes = this.navParams.data;
+    console.log(this.Quotes);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad QuotesPage');
+    //this.Quotes = this.navParams.data;
+    // add (?) operator in the template to angular loads when the data is available <ion-title>{{Quotes?.category | uppercase}}</ion-title>
   }
-
 }
