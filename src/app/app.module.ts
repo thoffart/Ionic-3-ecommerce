@@ -1,3 +1,4 @@
+import { TabsPage } from "./../pages/tabs/tabs";
 import { QuotesPageModule } from "./../pages/quotes/quotes.module";
 import { QuotePageModule } from "./../pages/quote/quote.module";
 import { BrowserModule } from "@angular/platform-browser";
@@ -10,19 +11,21 @@ import { MyApp } from "./app.component";
 import { FavoritesPage } from "../pages/favorites/favorites";
 import { LibraryPageModule } from "../pages/library/library.module";
 import { SettingsPageModule } from "../pages/settings/settings.module";
+import { FavoritesPageModule } from "../pages/favorites/favorites.module";
 
 @NgModule({
-  declarations: [MyApp, FavoritesPage],
+  declarations: [MyApp, TabsPage],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     LibraryPageModule,
     QuotePageModule,
     QuotesPageModule,
-    SettingsPageModule
+    SettingsPageModule,
+    FavoritesPageModule
   ],
   bootstrap: [IonicApp],
-  entryComponents: [MyApp, FavoritesPage],
+  entryComponents: [MyApp, TabsPage],
   providers: [
     StatusBar,
     SplashScreen,
