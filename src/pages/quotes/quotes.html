@@ -8,4 +8,12 @@
 
 
 <ion-content padding>
+  <ion-card *ngFor="let quote of Quotes.quotes; let i = index" class="animated bounceInRight">
+    <ion-card-header>
+      #{{i+1}}
+    </ion-card-header>
+    <ion-card-content>
+      {{quote.text}}
+    </ion-card-content>
+  </ion-card>
 </ion-content>

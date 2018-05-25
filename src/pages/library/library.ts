@@ -1,3 +1,4 @@
+import { Quote } from "./../../data/quote.interface";
 import { QuotesPage } from "./../quotes/quotes";
 import { Component, OnInit } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
