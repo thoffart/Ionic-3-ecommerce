@@ -8,12 +8,18 @@
 
 
 <ion-content padding>
-  <ion-card *ngFor="let quote of Quotes.quotes; let i = index" class="animated bounceInRight">
+  <ion-card *ngFor="let quote of Quotes.quotes; let i = index" class="animated bounceInRight" [ngStyle]="{'animation-delay': addDelay(i)}">
     <ion-card-header>
       #{{i+1}}
     </ion-card-header>
     <ion-card-content>
-      {{quote.text}}
+      <p>{{quote.text}}</p>
+      <p class="author">{{quote.person}}</p>
     </ion-card-content>
+    <ion-row>
+      <ion-col text-right>
+        <button ion-button clear small (click)="onAddFavorite(quote)">Favorite</button>
+      </ion-col>
+    </ion-row>
   </ion-card>
 </ion-content>
