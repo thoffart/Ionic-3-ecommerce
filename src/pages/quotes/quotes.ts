@@ -1,3 +1,4 @@
+import { QuotesProvider } from "./../../providers/quotes/quotes";
 import { Quote } from "./../../data/quote.interface";
 import { Component, OnInit } from "@angular/core";
 import {
@@ -17,7 +18,8 @@ export class QuotesPage implements OnInit {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private alertctrl: AlertController
+    private alertctrl: AlertController,
+    private quoteprovides: QuotesProvider
   ) {}
 
   ngOnInit(): void {
@@ -44,7 +46,7 @@ export class QuotesPage implements OnInit {
         {
           text: "Ok",
           handler: () => {
-            console.log("ok");
+            this.quoteprovides.addQuoteFavorites(selected);
           }
         },
         {
