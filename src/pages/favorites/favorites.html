@@ -28,18 +28,21 @@
 
     <ion-list>
       <ion-item-sliding *ngFor="let quote of quotes; let i = index">
-        <ion-item (click)="onViewQuote(quote)" color="quoteBackground">
-          <div class="animated bounceInRight" [ngStyle]="{'animation-delay': addDelay(i)}">
-            <h2>{{quote.person}}</h2>
-            <p>{{quote.text}}</p>
-          </div>
-        </ion-item>
-        <ion-item-options>
-          <button ion-button color="danger" class="animated fadeIn" [ngStyle]="{'animation-delay': addDelay(i)}" (click)="onRemoveFromFavorites(quote)">
-            <ion-icon name="trash"></ion-icon>
-            Delete
-          </button>
-        </ion-item-options>
+        <!-->
+        <ion-item (click)="onViewQuote(quote)" [color]="getBackground()">
+          <-->
+            <ion-item (click)="onViewQuote(quote)" color="quoteBackground" [ngClass]="{alt: isAltBackground()}">
+              <div class="animated bounceInRight" [ngStyle]="{'animation-delay': addDelay(i)}">
+                <h2>{{quote.person}}</h2>
+                <p>{{quote.text}}</p>
+              </div>
+            </ion-item>
+            <ion-item-options>
+              <button ion-button color="danger" class="animated fadeIn" [ngStyle]="{'animation-delay': addDelay(i)}" (click)="onRemoveFromFavorites(quote)">
+                <ion-icon name="trash"></ion-icon>
+                Delete
+              </button>
+            </ion-item-options>
       </ion-item-sliding>
     </ion-list>
 </ion-content>

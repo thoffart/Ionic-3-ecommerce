@@ -1,3 +1,4 @@
+import { SettingsProvider } from "./../../providers/settings/settings";
 import { QuotePage } from "./../quote/quote";
 import { QuotesProvider } from "./../../providers/quotes/quotes";
 import { OnInit } from "@angular/core";
@@ -22,7 +23,8 @@ export class FavoritesPage implements OnInit {
     public navCtrl: NavController,
     public navParams: NavParams,
     private quotesprovider: QuotesProvider,
-    private modalctrl: ModalController
+    private modalctrl: ModalController,
+    private setpro: SettingsProvider
   ) {}
 
   ngOnInit() {}
@@ -50,5 +52,15 @@ export class FavoritesPage implements OnInit {
   onRemoveFromFavorites(quote: Quote) {
     this.quotesprovider.removeQuoteFromFavorites(quote);
     this.quotes = this.quotesprovider.getFavoriteQuote();
+  }
+
+  getBackground() {
+    return this.setpro.isAltBackground()
+      ? "altQuoteBackground"
+      : "quoteBackground";
+  }
+
+  isAltBackground() {
+    return this.setpro.isAltBackground();
   }
 }

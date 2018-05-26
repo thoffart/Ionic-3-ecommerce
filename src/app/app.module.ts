@@ -14,6 +14,7 @@ import { LibraryPageModule } from "../pages/library/library.module";
 import { SettingsPageModule } from "../pages/settings/settings.module";
 import { FavoritesPageModule } from "../pages/favorites/favorites.module";
 import { QuotesProvider } from "../providers/quotes/quotes";
+import { SettingsProvider } from '../providers/settings/settings';
 
 @NgModule({
   declarations: [MyApp, TabsPage],
@@ -34,7 +35,8 @@ import { QuotesProvider } from "../providers/quotes/quotes";
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     QuotesProvider,
-    HttpClient
+    HttpClient,
+    SettingsProvider
   ]
 })
 export class AppModule {}

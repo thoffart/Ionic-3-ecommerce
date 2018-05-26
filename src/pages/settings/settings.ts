@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { SettingsProvider } from "./../../providers/settings/settings";
+import { Component } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
 
 /**
  * Generated class for the SettingsPage page.
@@ -10,16 +11,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-settings',
-  templateUrl: 'settings.html',
+  selector: "page-settings",
+  templateUrl: "settings.html"
 })
 export class SettingsPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private setpro: SettingsProvider
+  ) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingsPage');
+    console.log("ionViewDidLoad SettingsPage");
   }
 
+  onToggle(toogle: any) {
+    this.setpro.setBackground(toogle.checked);
+  }
+
+  checkAltBackground() {
+    return this.setpro.isAltBackground();
+  }
 }
