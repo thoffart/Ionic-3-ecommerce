@@ -7,7 +7,8 @@ import {
   IonicPage,
   NavController,
   NavParams,
-  ModalController
+  ModalController,
+  MenuController
 } from "ionic-angular";
 
 @IonicPage()

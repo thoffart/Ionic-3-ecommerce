@@ -1,6 +1,7 @@
+import { SettingsPage } from "./../pages/settings/settings";
 import { TabsPage } from "./../pages/tabs/tabs";
-import { Component } from "@angular/core";
-import { Platform, Tabs } from "ionic-angular";
+import { Component, ViewChild } from "@angular/core";
+import { Platform, Tabs, NavController, MenuController } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { FavoritesPage } from "../pages/favorites/favorites";
@@ -8,12 +9,14 @@ import { FavoritesPage } from "../pages/favorites/favorites";
   templateUrl: "app.html"
 })
 export class MyApp {
-  rootPage: any = TabsPage;
-
+  tabsPage = TabsPage;
+  settingsPage = SettingsPage;
+  @ViewChild("nav") nav: NavController;
   constructor(
     platform: Platform,
     statusBar: StatusBar,
-    splashScreen: SplashScreen
+    splashScreen: SplashScreen,
+    private menuctrl: MenuController
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -21,5 +24,10 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+  }
+
+  onLoad(page: any) {
+    this.nav.setRoot(page);
+    this.menuctrl.close();
   }
 }
