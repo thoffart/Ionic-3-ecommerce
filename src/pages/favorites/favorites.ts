@@ -41,9 +41,13 @@ export class FavoritesPage implements OnInit {
     modal.present();
     modal.onDidDismiss(remove => {
       if (remove) {
-        this.quotesprovider.removeQuoteFromFavorites(quote);
-        this.quotes = this.quotesprovider.getFavoriteQuote();
+        this.onRemoveFromFavorites(quote);
       }
     });
+  }
+
+  onRemoveFromFavorites(quote: Quote) {
+    this.quotesprovider.removeQuoteFromFavorites(quote);
+    this.quotes = this.quotesprovider.getFavoriteQuote();
   }
 }
