@@ -1,25 +1,43 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the FavoritesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { QuotePage } from "./../quote/quote";
+import { QuotesProvider } from "./../../providers/quotes/quotes";
+import { OnInit } from "@angular/core";
+import { Quote } from "./../../data/quote.interface";
+import { Component } from "@angular/core";
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  ModalController
+} from "ionic-angular";
 
 @IonicPage()
 @Component({
-  selector: 'page-favorites',
-  templateUrl: 'favorites.html',
+  selector: "page-favorites",
+  templateUrl: "favorites.html"
 })
-export class FavoritesPage {
+export class FavoritesPage implements OnInit {
+  quotes: Quote[] = [];
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private quotesprovider: QuotesProvider,
+    private modalctrl: ModalController
+  ) {}
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  ngOnInit() {}
+
+  ionViewWillEnter() {
+    this.quotes = this.quotesprovider.getFavoriteQuote();
+    console.log(this.quotes);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FavoritesPage');
+  addDelay(y: number) {
+    let x = y * 0.25;
+    return x.toString() + "s";
   }
 
+  onViewQuote(quote: Quote) {
+    const modal = this.modalctrl.create(QuotePage, quote);
+    modal.present();
+  }
 }

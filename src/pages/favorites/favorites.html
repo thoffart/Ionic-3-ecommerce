@@ -8,5 +8,23 @@
 
 
 <ion-content padding>
+  <!-->
+  <ion-card *ngFor="let quote of quotes; let i = index" class="animated bounceInRight" [ngStyle]="{'animation-delay': addDelay(i)}">
+    <ion-card-header>
+      #{{i+1}}
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{quote.text}}</p>
+      <p class="author">{{quote.person}}</p>
+    </ion-card-content>
+  </ion-card>
+  <-->
 
+    <ion-list>
+      <ion-item *ngFor="let quote of quotes; let i = index" class="animated bounceInRight" [ngStyle]="{'animation-delay': addDelay(i)}"
+        (click)="onViewQuote(quote)">
+        <h2>{{quote.person}}</h2>
+        <p>{{quote.text}}</p>
+      </ion-item>
+    </ion-list>
 </ion-content>
