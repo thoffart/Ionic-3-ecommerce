@@ -60,4 +60,10 @@ export class QuotesPage implements OnInit {
     });
     alert.present();
   }
+
+  onRemoveFavorite(quote: Quote) {}
+
+  isFavorite(quote: Quote) {
+    return this.quoteprovides.isQuoteFavorite(quote);
+  }
 }

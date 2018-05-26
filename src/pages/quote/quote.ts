@@ -25,7 +25,7 @@ export class QuotePage {
     this.text = this.navParams.get("text");
   }
 
-  onClose() {
-    this.viewctrl.dismiss();
+  onClose(remove = false) {
+    this.viewctrl.dismiss(remove);
   }
 }

@@ -39,5 +39,11 @@ export class FavoritesPage implements OnInit {
   onViewQuote(quote: Quote) {
     const modal = this.modalctrl.create(QuotePage, quote);
     modal.present();
+    modal.onDidDismiss(remove => {
+      if (remove) {
+        this.quotesprovider.removeQuoteFromFavorites(quote);
+        this.quotes = this.quotesprovider.getFavoriteQuote();
+      }
+    });
   }
 }
